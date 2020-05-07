@@ -1,0 +1,12 @@
+fastapi
+uvicorn
+python-multipart
+jinja2
+aiofiles
+python-jose
+httpx
+pycryptodomex
+SQLAlchemy
+pickledb
+hbmqtt
+paho-mqtt

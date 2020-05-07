@@ -2,9 +2,9 @@
 __pycache__/
 *.py[cod]
 *$py.class
-
 # C extensions
 *.so
+
 
 # Distribution / packaging
 .Python
@@ -127,3 +127,22 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+.idea/
+venv38/Include/
+venv38/Scripts/Activate.ps1
+venv38/Scripts/activate
+venv38/Scripts/activate.bat
+venv38/Scripts/deactivate.bat
+venv38/Scripts/easy_install-3.8-script.py
+venv38/Scripts/easy_install-3.8.exe
+venv38/Scripts/easy_install-script.py
+venv38/Scripts/easy_install.exe
+venv38/Scripts/pip-script.py
+venv38/Scripts/pip.exe
+venv38/Scripts/pip3-script.py
+venv38/Scripts/pip3.8-script.py
+venv38/Scripts/pip3.8.exe
+venv38/Scripts/pip3.exe
+venv38/Scripts/python.exe
+venv38/Scripts/pythonw.exe
+venv38/pyvenv.cfg
