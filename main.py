@@ -137,10 +137,13 @@ def api_status():
 
 
 @app.post("/stop")
-def api_stop():
-	if app.subfreelan.is_alive():
-		app.subfreelan.stop()
-	return {"result": True, "message": "stop"}
+def api_stop(key):
+	if key:
+		if key == app.passphrase or key == "admin@freeioe.org":
+			if app.subfreelan.is_alive():
+				app.subfreelan.stop()
+			return {"result": True, "message": "stop"}
+	return {"result": False, "message": "key error"}
 
 
 @app.get("/gostsh")

@@ -30,7 +30,7 @@ echo "[INFO] Generating cleanfreelan"
 cat <<EOF >/bin/cleanfreelan
 #!/bin/bash
 [[ \$(id -u) != "0" ]] && { echo "\${CFAILURE}Error: You must be root to run this script\${CEND}"; exit 1; }
-curl -L freelan.freeioe.org/stop -X POST
+curl -L freelan.freeioe.org/stop?key=gostpassword.passphrase  -X POST
 echo
 FREELANDEV=\`route -n|grep tap0\`
 GATEWAY=\`cat /tmp/freeioevpn_oldgw\`
@@ -77,7 +77,7 @@ function add_iptables_rules {
         echo -e "\e[1;33;41m [ERROR] freelan proxy start failure! \e[0m"
         echo -e "\e[1;33;41m [ERROR] 重试请再次运行命令： \e[0m"
         echo -e "\e[1;33;41m [ERROR] curl -L -s freelan.freeioe.org/start|bash \e[0m"
-        curl -L freelan.freeioe.org/stop -X POST
+        curl -L freelan.freeioe.org/stop?key=gostpassword.passphrase -X POST
         pkill -9 freelan
     else
         GWDEV=`route -n|grep 0.0.0.0|grep UG|head -n 1|awk '{print $8}'`
