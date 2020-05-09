@@ -24,7 +24,7 @@ echo "[INFO] Generating cleangostlan"
 cat <<EOF >/bin/cleangostlan
 #!/bin/bash
 [[ \$(id -u) != "0" ]] && { echo "\${CFAILURE}Error: You must be root to run this script\${CEND}"; exit 1; }
-curl -L freelan.freeioe.org/goststop -X POST
+curl -L freelan.freeioe.org/goststop?key=gostpassword.passphrase -X POST
 echo
 GOSTLANDEV=\`route -n|grep tun0\`
 GATEWAY=\`cat /tmp/freeioevpn_oldgw\`
@@ -71,7 +71,7 @@ function add_iptables_rules {
         echo -e "\e[1;33;41m [ERROR] gostlan proxy start failure! \e[0m"
         echo -e "\e[1;33;41m [ERROR] 重试请再次运行命令： \e[0m"
         echo -e "\e[1;33;41m [ERROR] curl -L -s freelan.freeioe.org/goststart|bash \e[0m"
-        curl -L freelan.freeioe.org/goststop -X POST
+        curl -L freelan.freeioe.org/goststop?key=gostpassword.passphrase -X POST
         pkill -9 gost
     else
         GWDEV=`route -n|grep 0.0.0.0|grep UG|head -n 1|awk '{print $8}'`

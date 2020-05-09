@@ -188,11 +188,13 @@ def api_goststatus():
 
 
 @app.post("/goststop")
-def api_goststop():
-	if app.subgostlan.is_alive():
-		app.subgostlan.stop()
-	return {"result": True, "message": "stop"}
-
+def api_goststop(key):
+	if key:
+		if key == app.gostpassword or key == "admin@freeioe.org":
+			if app.subgostlan.is_alive():
+				app.subgostlan.stop()
+			return {"result": True, "message": "stop"}
+	return {"result": False, "message": "key error"}
 
 # app.include_router(apiv1, prefix='/api/v1/micro', tags=['apiv1'])
 # app.include_router(apiFreelan, prefix='/api/v1/freelan', tags=['apiFreelan'])
